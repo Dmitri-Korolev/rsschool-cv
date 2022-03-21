@@ -18,21 +18,35 @@ I am applying for the position of I am a frontend developer looking for a job in
 * Git
 ********* 
 ### Code example:
-KATA from CODEWARS: write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+Implement the loadPosts() function that returns a Promise with posts
+loaded from [https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts "jsonplaceholder link") and alphabetically sorted by title
 ```
-function moveZeros(arr) {
-  let result = arr.filter(word => word !==0);
-  arr.forEach(function(item){
-    if (item === 0) result.push(item)
-  })
-  return result
+ function loadPosts() {
+    return new Promise(function(resolve, reject){
+        fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(response => {
+            return response.json();
+        })
+        .then(body => {
+            return body;
+        }) 
+        .then(body => {
+          	function SortArray(x, y){
+   					 			if (x.title < y.title) {return -1;}
+    							if (x.title > y.title) {return 1;}
+    							return 0;
+			}
+            let sorted = body.sort(SortArray);
+            return sorted
+        });        
+    });
 }
 ```
 ********* 
 ### Courses:
-1. [WEB Developer 2021](www.udemy.com/course/webdeveloper/ "WEB Developer 2021") 
-2. [Full course on JavaScript + React - from scratch to the result](www.udemy.com/course/javascript_full/ "JavaScript + React courses")
-3. [React + Redux - Professional Development](www.udemy.com/course/pro-react-redux/ "React + Redux courses") 
+1. [WEB Developer 2021](https://udemy.com/course/webdeveloper/ "WEB Developer 2021") 
+2. [Full course on JavaScript + React - from scratch to the result](https://udemy.com/course/javascript_full/ "JavaScript + React courses")
+3. [React + Redux - Professional Development](https://udemy.com/course/pro-react-redux/ "React + Redux courses") 
 *********
 ### Languages:
 1. English - Intermediate
